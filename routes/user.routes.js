@@ -1,5 +1,6 @@
 import express from "express";
 import db from "../mockdb";
+import { findAll, findOne, addOne, removeOne } from "../controllers/controller";
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.get("/:id?", async (req, res, next) => {
         data = await db.getOne(id);
        }
        else{
-        data = await db.getAll();
+        data = await db.findAll();
        }
        res.json(data);
     } catch (error) {
